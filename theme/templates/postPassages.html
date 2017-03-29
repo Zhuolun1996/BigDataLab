@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+{% block content %}
+<form action="/postPassage/" method="post">
+    {% csrf_token %}
+    <label for="id_passageLink">谣言链接</label>
+    <input id="id_passageLink" maxlength="1000" name="passageLink" placeHolder="谣言链接" type="text" required/>
+    <label for="id_passageTitle">谣言标题</label>
+    <input id="id_passageTitle" maxlength="100" name="passageTitle" placeholder="谣言题目" type="text" />
+    <label for="id_passageBody">谣言内容</label>
+    <textarea id="id_passageBody" name="passageBody" placeholder="谣言内容" col="40" rows="10"></textarea>
+    <label for="id_passageDate">谣言日期</label>
+    <input id="id_passageDate" name="passageDate" type="date"/>
+    <select id="id_passageSource" name="passageSource">
+        <option value="friendCicle">朋友圈</option>
+        <option value="message">短信</option>
+        <option value="email">邮件</option>
+    </select>
+    <select id="id_passageLabel" name="passageLabel" >
+        <option value="Food">食品安全</option>
+        <option value="health">健康养生</option>
+        <option value="newTech">新科技</option>
+    </select>
+    <input type="submit"/>
+</form>
+{% endblock %}

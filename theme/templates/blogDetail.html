@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+{% block content %}
+{{ blog.title }}
+{{ blog.body|markdown:'recipe' }}
+{{ blog.date }}
+{{ blog.get_label_display }}
+{% endblock %}

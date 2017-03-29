@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/postBlog/" method="post">
+    {% csrf_token %}
+    <label for="id_title">文章标题</label>
+    <input id="id_title" maxlength="100" name="title" placeholder="文章题目" type="text" />
+    <label for="id_body">文章内容</label>
+    <textarea id="id_body" name="body" placeholder="文章内容" col="40" rows="10"></textarea>
+    <label for="id_date">谣言日期</label>
+    <input id="id_date" name="date" type="date"/>
+    <select id="id_label" name="label" >
+        <option value="Food">食品安全</option>
+        <option value="health">健康养生</option>
+        <option value="newTech">新科技</option>
+    </select>
+    <input type="submit"/>
+</form>
+{% endblock %}
