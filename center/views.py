@@ -35,7 +35,7 @@ def indexPage(request):
     _cloudString=""
     for item in passages:
         _cloudString+=item.passageTitle+item.passageBody
-    functions.createWordCloud(_cloudString)
+    #functions.createWordCloud(_cloudString)
     return render(request, 'index.html', {'passages': passages,'passagesCounts':passagesCounts,'showingPassages':showPassages})
 
 @login_required

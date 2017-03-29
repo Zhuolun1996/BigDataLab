@@ -1,0 +1,5 @@
+edit to source code
+misago:
+misago/categories/url/__init__.py
+chinese_cloud/chinese_cloud.py
+chinese_cloud/integral_occupancy_map.py

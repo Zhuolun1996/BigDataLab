@@ -9,7 +9,7 @@ from testForum1.settings import STATIC_ROOT
 
 def getURLTitle(url):
     htmlText = requests.get(url).text
-    soup = BeautifulSoup(htmlText)
+    soup = BeautifulSoup(htmlText,"html5lib")
     return soup.title.string
 
 
