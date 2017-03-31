@@ -1,5 +1,9 @@
-edit to source code
+source code edition
 misago:
-misago/categories/url/__init__.py
-chinese_cloud/chinese_cloud.py
-chinese_cloud/integral_occupancy_map.py
+misago/categories/url/__init__.py:url
+misago/locale
+chinese_cloud:
+chinese_cloud/chinese_cloud.py:import
+chinese_cloud/integral_occupancy_map.py:import
+chinese_cloud/chinese_cloud.py:is_word
+chinese_cloud/chinese_cloue.py:to_image
