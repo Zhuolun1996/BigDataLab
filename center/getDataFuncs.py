@@ -44,7 +44,7 @@ def getPassageCounts(request):
                 passage.objects.filter(passageDate=datetime.date.today() - datetime.timedelta(days=i)).count())
         except passage.DoesNotExist:
             passagesCounts.append(0)
-    return JsonResponse(passagesCounts)
+    return JsonResponse(passagesCounts, safe=False)
 
 
 @ajax

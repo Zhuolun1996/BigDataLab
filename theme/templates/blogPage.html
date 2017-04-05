@@ -10,18 +10,21 @@
     <p id="123"></p>
     <script type="text/javascript">
         $(document).ready(function () {
-            ajaxGet('/ajax_getAllBlogs/', function (content) {
+            ajaxGet('/ajax_getPassageCounts/', function (content) {
                 //onSuccess
+                console.log(content);
                 var obj = jQuery.parseJSON(content);
-                console.log(obj[1]['fields']['body']);
-                $('#123').html(obj[1]['fields']['body']);
+                console.log(obj);
+{#                console.log(obj[1]['fields']['body']);#}
+{#                $('#123').html(obj[1]['fields']['body']);#}
             });
         });
         $(document).ready(function () {
-            ajaxGet('/ajax_getSearchingBlog/haha', function (content) {
+            ajaxGet('/ajax_getSearchingBlog/hh', function (content) {
                 //onSuccess
+                console.log(content);
                 var obj = jQuery.parseJSON(content);
-                console.log(obj[0]['fields']['body']);
+                console.log(obj);
             });
         });
     </script>
