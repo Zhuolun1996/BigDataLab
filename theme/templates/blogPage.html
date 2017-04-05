@@ -1,10 +1,22 @@
 {% extends "base.html" %}
 {% load markdown_deux_tags %}
 {% block content %}
-{% for item in blogs %}
-<a href="{% url 'blogdetail' title=item.title %}" >{{ item.title }}</a>
-    <a href="{% url 'blogtags' tag=item.label %}" >{{ item.get_label_display }}</a>
-    {{ item.body|markdown:'recipe'|truncatewords_html:5 }}
-    {{ item.date }}
-{% endfor %}
+{#{% for item in blogs %}#}
+{#<a href="{% url 'blogdetail' title=item.title %}" >{{ item.title }}</a>#}
+{#    <a href="{% url 'blogtags' tag=item.label %}" >{{ item.get_label_display }}</a>#}
+{#    {{ item.body|markdown:'recipe'|truncatewords_html:5 }}#}
+{#    {{ item.date }}#}
+{#{% endfor %}#}
+    <p id="123"></p>
+    <script type="text/javascript">
+    $(document).ready(function() {
+     ajaxGet('/ajax_getAllBlogs/', function(content){
+        //onSuccess
+        var obj = jQuery.parseJSON(content);
+        console.log(obj[1]['fields']['body']);
+        $('#123').html(obj[1]['fields']['body']);
+    })
+});
+</script>
 {% endblock %}
+

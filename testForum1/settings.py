@@ -207,6 +207,7 @@ INSTALLED_APPS = [
     'misago.datamover',
     'center',
     'markdown_deux',
+    'django_ajax',
 ]
 
 INTERNAL_IPS = [

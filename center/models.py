@@ -11,7 +11,7 @@ class passage(models.Model):
     passageDate = models.DateField(auto_now=True)
     passageSource = models.CharField(max_length=20, choices=PASSAGE_SOURCE_CHOICES, null=False)
     passageLabel = models.CharField(max_length=20, choices=PASSAGE_LABEL_CHOICES, null=False)
-
+    passagePhone = models.CharField(max_length=20,blank=True)
     def __str__(self):
         return self.passageTitle
 

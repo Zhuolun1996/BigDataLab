@@ -22,14 +22,13 @@ from django.views.generic import TemplateView
 from misago.core.views import javascript_catalog
 from misago.users.forms.auth import AdminAuthenticationForm
 import center.views as centerViews
-
+import center.getDataFuncs as centerData
 
 admin.autodiscover()
 admin.site.login_form = AdminAuthenticationForm
 
-
 urlpatterns = [
-    url(r'^$',centerViews.indexPage,name='index'),
+    url(r'^$', centerViews.indexPage, name='index'),
     url(r'^', include('misago.urls', namespace='misago')),
 
     # Javascript translations
@@ -37,29 +36,35 @@ urlpatterns = [
 
     # Uncomment next line if you plan to use Django admin for 3rd party apps
     url(r'^django-admin/', include(admin.site.urls)),
-    url(r'^postPassage/$',centerViews.postPassage,name='postpassage'),
-    url(r'^postPassagePage/$',centerViews.postPassagePage,name='postpage'),
-    url(r'^postBlog/$',centerViews.postBlog,name='postblog'),
-    url(r'^postBlogPage/$',centerViews.postBlogPage,name='postblogpage'),
-    url(r'^blogPage/$',centerViews.blogPage,name='blogpage'),
-    url(r'^blogDetail/(?P<title>\S+)/$',centerViews.blogDetail,name='blogdetail'),
-    url(r'^blogTags/(?P<tag>\S+)/$',centerViews.searchTag,name='blogtags'),
-    url(r'^blogArchives/(?P<name>\S+)/$',centerViews.searchBlog,name='blogarchives'),
-]
+    url(r'^postPassage/$', centerViews.postPassage, name='postpassage'),
+    url(r'^postPassagePage/$', centerViews.postPassagePage, name='postpage'),
+    url(r'^postBlog/$', centerViews.postBlog, name='postblog'),
+    url(r'^postBlogPage/$', centerViews.postBlogPage, name='postblogpage'),
+    url(r'^blogPage/$', centerViews.blogPage, name='blogpage'),
+    url(r'^blogDetail/$', centerViews.blogDetail, name='blogdetail'),
+    url(r'^blogTags/$', centerViews.searchTag, name='blogtags'),
+    url(r'^blogArchives/$', centerViews.searchBlog, name='blogarchives'),
+    url(r'^ajax_getAllBlogs/$', centerData.getAllBlogPassages, name='ajax_getallblogs'),
+    url(r'^ajax_getAllShowingBlogs/$', centerData.getAllShowingPassage, name='ajax_getallshowingblogs'),
+    url(r'^ajax_getTodayPassages/$', centerData.getTodayPassages, name='ajax_gettodaypassages'),
+    url(r'^ajax_getPassageCounts/$', centerData.getPassageCounts, name='ajax_getpassagecounts'),
+    url(r'^ajax_getBlogDetail/(?P<title>\S+)/$', centerData.getBlogDetail, name='ajax_getblogdetail'),
+    url(r'^ajax_getSearchingTag/(?P<tag>\S+)/$', centerData.getSearchingTag, name='ajax_getsearchingtag'),
+    url(r'^ajax_getSearchingBlog/(?P<name>\S+)/$', centerData.getSearchingBlog, name='ajax_getsearchingblog'),
 
+]
 
 # If debug mode is enabled, include debug toolbar
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns += [
         url(r'^__debug__/', include(debug_toolbar.urls)),
     ]
 
-
 # Use static file server for static and media files (debug only)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
 
 # Error Handlers
 # Misago needs those handlers to deal with errors raised by it's middlewares
