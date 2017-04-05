@@ -44,13 +44,14 @@ urlpatterns = [
     url(r'^blogDetail/$', centerViews.blogDetail, name='blogdetail'),
     url(r'^blogTags/$', centerViews.searchTag, name='blogtags'),
     url(r'^blogArchives/$', centerViews.searchBlog, name='blogarchives'),
+    #Ajax methods
     url(r'^ajax_getAllBlogs/$', centerData.getAllBlogPassages, name='ajax_getallblogs'),
     url(r'^ajax_getAllShowingBlogs/$', centerData.getAllShowingPassage, name='ajax_getallshowingblogs'),
     url(r'^ajax_getTodayPassages/$', centerData.getTodayPassages, name='ajax_gettodaypassages'),
     url(r'^ajax_getPassageCounts/$', centerData.getPassageCounts, name='ajax_getpassagecounts'),
-    url(r'^ajax_getBlogDetail/(?P<title>\S+)/$', centerData.getBlogDetail, name='ajax_getblogdetail'),
-    url(r'^ajax_getSearchingTag/(?P<tag>\S+)/$', centerData.getSearchingTag, name='ajax_getsearchingtag'),
-    url(r'^ajax_getSearchingBlog/(?P<name>\S+)/$', centerData.getSearchingBlog, name='ajax_getsearchingblog'),
+    url(r'^ajax_getBlogDetail/(?P<title>\S+)$', centerData.getBlogDetail, name='ajax_getblogdetail'),
+    url(r'^ajax_getSearchingTag/(?P<tag>\S+)$', centerData.getSearchingTag, name='ajax_getsearchingtag'),
+    url(r'^ajax_getSearchingBlog/(?P<name>\S+)$', centerData.getSearchingBlog, name='ajax_getsearchingblog'),
 
 ]
 
