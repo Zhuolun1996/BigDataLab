@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% load markdown_deux_tags %}
 {% block content %}
-{% if showingPassages == '无展示谣言' %}
-    {{ showingPassages }}
-    {% else %}
-    {% for item in showingPassages %}
-    {{ item.passageTitle }}
-    {{ item.passageBody|markdown:'recipe' }}
-    {% endfor %}
-    {% endif %}
-{% if passages == '今日无新增举报' %}
-    {{ passages }}
-{% endif %}
-{% for item in passagesCounts %}
-    {{ item }}
-{% endfor %}
+{#{% if showingPassages == '无展示谣言' %}#}
+{#    {{ showingPassages }}#}
+{#    {% else %}#}
+{#    {% for item in showingPassages %}#}
+{#    {{ item.passageTitle }}#}
+{#    {{ item.passageBody|markdown:'recipe' }}#}
+{#    {% endfor %}#}
+{#    {% endif %}#}
+{#{% if passages == '今日无新增举报' %}#}
+{#    {{ passages }}#}
+{#{% endif %}#}
+{#{% for item in passagesCounts %}#}
+{#    {{ item }}#}
+{#{% endfor %}#}
 <img src="/static/wordcloud/wordcloud.png"/>
 <a href="/threads/">threads</a>
 <a href="/categories/">catagories</a>
