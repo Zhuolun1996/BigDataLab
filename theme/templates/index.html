@@ -1,25 +1,272 @@
-{% extends "base.html" %}
-{% load markdown_deux_tags %}
-{% block content %}
-{% if showingPassages == '无展示谣言' %}
-    {{ showingPassages }}
-    {% else %}
-    {% for item in showingPassages %}
-    {{ item.passageTitle }}
-    {{ item.passageBody|markdown:'recipe' }}
-    {% endfor %}
-    {% endif %}
-{% if passages == '今日无新增举报' %}
-    {{ passages }}
-{% endif %}
-{% for item in passagesCounts %}
-    {{ item }}
-{% endfor %}
-<img src="/static/wordcloud/wordcloud.png"/>
-<a href="/threads/">threads</a>
-<a href="/categories/">catagories</a>
-<a href="/login/">login</a>
-<a href="/postPassagePage/">postpassages</a>
-<a href="/postBlogPage/">postblog</a>
-<a href="/blogPage/">blogPage</a>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BDC 门户页</title>
+    <link rel="stylesheet" href="static/assert/Font-Awesome-3.2.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/assert/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/post.css">
+    <link rel="stylesheet" href="/static/css/btAttach.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href=""><img src=" /static/img/logo.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 导航条开始 -->
+    <nav class = "main-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- <div class="navbar" role="navigation"> -->
+                         <div class="navbar-header">
+                            <!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                <span class="sr-only">Toggle Navigation</span>
+                                <i class = "icon-reorder"></i>
+<!--                                 <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span> -->
+                            </button>
+                            <!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+                            <a href="##" class="navbar-brand">BDC辟谣网</a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-responsive-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/index/" class = "btn">首页</a></li>
+                                <li><a class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">举报</a></li>
+                                <li><a href="##" class = "btn">辟谣</a></li>
+                                <li><a href="##" class = "btn" id = "post-pages-btn">往期文章</a></li>
+                                <li><a href="##" class = "btn">论坛</a></li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="" type = "button" class = "btn" data-toggle = "modal" data-target = "#log-in" > <span class = "glyphicon glyphicon-log-in"></span> 登入</a></li>
+                                <li><a href="##" type = "button" class = "btn" data-toggle = "modal" data-target = "#register"> <span class = "icon-user"></span>注册</a></li>
+                            </ul>
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- 导航条结束 -->
+    
+    <!-- 数据展示区开始 -->
+    <div class = "container">
+        <div class="row">
+            <!-- 热门谣言轮播展示 -->
+            <div class = "col-md-4 col-sm-12">
+                <div id = "data-carousel"></div>
+            </div>
+            <!-- 热门谣言轮播展示结束 -->
+        </div>
+    </div>
+    <!-- 数据展示区结束 -->
+    
+    <!-- 主体部分开始 -->
+    <div class = "content">
+        <div class = "container">
+            <div class="row">
+                <div class="article-content col-md-10 col-md-offset-1" id = "post-pages">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 主体部分结束 -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 谣言举报模态窗开始 -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"  aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class = "row">
+                        <div class = "col-md-offset-5">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="gridSystemModalLabel">谣言举报</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        
+                        <div class="form-group">
+                            <label for="rumor-title" class="col-md-2 control-label">标题</label>
+                            <div class = "col-md-8">
+                                <input type="text" class="form-control" id="rumor-title" placeholder="谣言标题">
+                            </div>
+                        </div>    
+
+                        <div class="form-group">
+                            <label for="rumor-link" class="col-md-2 control-label">链接</label>
+                            <div class = "col-md-8">
+                                <input type="text" class="form-control" id="rumor-link" placeholder="https://">
+                            </div>
+                        </div>    
+                
+                        <div class="form-group">
+                            <div for="rumor-source" class="col-md-2 control-label"><strong>来源</strong></div>
+                            <div class = "col-md-8">
+                                <label class = "radio-inline" for="frineds-cycle"><input type="radio" name="rumor-source" value="friends-cycle" id = "friends-cycle">朋友圈</label>
+                                <label class = "radio-inline" for="message"><input type="radio" name="rumor-source" value="message" id = "message">短信</label>
+                                <label class = "radio-inline" for="email"><input type="radio" name="rumor-source" value="email" id = "email">邮件</label>
+                            </div>
+                        </div>  
+                        
+                        <div class="form-group">
+                            <div for="rumor-label" class="col-md-2 control-label"><strong>标签</strong></div>
+                            <div class = "col-md-8">
+                                <label class = "radio-inline" for="food-safety"><input type="radio" name="rumor-label" value="food-safety">食品安全</label>
+                                <label class = "radio-inline" for="health"><input type="radio" name="rumor-label" value="health" id = "health">健康养生</label>
+                                <label class = "radio-inline" for="technology"><input type="radio" name="rumor-label" value="technology" id = "technology">新科技</label>
+                            </div>
+                        </div>  
+                        
+                        <div class="form-group">
+                            <label for="contact" class="col-md-2 control-label">联系方式</label>
+                            <div class = "col-md-8">
+                                <input type="text" class="form-control" id="contact" placeholder="联系方式">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rumor-text" class="col-md-2 control-label">正文</label>
+                            <div class = "col-md-8">
+                                 <textarea class="form-control" rows="3" id = "text" placeholder="谣言正文"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class = "col-md-8 col-md-offset-2 btn btn-info">   
+                                提交
+                                <!-- <button class = "btn btn-info" type = "submit">提交</button> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 谣言举报模态窗结束 -->
+    
+    <!-- 注册登录页模态窗口开始 -->
+
+    <!-- 登录页部分开始 -->
+    <div class="modal fade" id="log-in" tabindex="-1" role="dialog" aria-labelledby = "log-in-title">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id = "log-in-title">
+                    <div class="row">
+                        <div class="col-md-offset-5">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">登录</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "modal-body">
+                    <form action="" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="log-in-name">用户名</label>
+                            <div class="col-md-8">
+                                <input type="text" id="log-in-name" class = "form-control" placeholder = "用户名">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="log-in-password">密码</label>
+                            <div class="col-md-8">
+                                <input type="password" id="log-in-password" class = "form-control" placeholder = "密码">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 登录页结束 -->
+    
+    <!-- 注册页开始 -->
+    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby = "register-title">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id = "register-title">
+                    <div class="row">
+                        <div class="col-md-offset-5">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">用户注册</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "modal-body">
+                    <form action="" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="register-name">用户名</label>
+                            <div class="col-md-8">
+                                <input type="text" id="register-name" class = "form-control" placeholder = "用户名">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="register-email">邮箱地址</label>
+                            <div class="col-md-8">
+                                <input type="text" id="log-in-name" class = "form-control" placeholder = "邮箱地址">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="register-contact">手机号码</label>
+                            <div class="col-md-8">
+                                <input type="text" id="register-contact" class = "form-control" placeholder = "手机号码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="register-password">密码</label>
+                            <div class="col-md-8">
+                                <input type="password" id="register-password" class = "form-control" placeholder = "密码">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 注册页结束 -->
+    <!-- 注册登录页模态窗口结束 -->
+
+    <div id = "test"></div>
+    <script src="static/js/jquery-3.2.0.min.js"></script>
+    <script src="static/assert/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script> 
+    <script src = "static/js/particle.js"></script>
+    <script src = "static/js/move.js"></script>
+    <script src = "static/js/main.js"></script>
+    <script src = "static/js/ajax.js"></script>
+</body>
+</html>

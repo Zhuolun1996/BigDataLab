@@ -1,0 +1,83 @@
+
+div,
+ul,
+li,
+h3,
+p
+{
+    font-family: Helvetica;
+    margin: 0;
+    padding: 0;
+}
+
+/*主页数据轮播开始*/
+#data-carousel
+{
+    position: relative;
+
+    overflow: hidden;
+    zoom: 1;
+
+    margin: 100px auto;
+
+    data-carousel-shadow: 0 0 25px rgba(0,0,0,.7);
+}
+#data-carousel ul
+{
+    position: absolute;
+    left: 0;
+}
+#data-carousel ul li
+{
+    float: left;
+
+    list-style: none;
+}
+#data-carousel div
+{
+    position: absolute;
+    bottom: 0;
+
+    height: 50px;
+    padding: 8px 20px;
+
+    color: #fff;
+    background: rgba(0,0,0,.6);
+
+    data-carousel-sizing: border-data-carousel;
+}
+#data-carousel div h3
+{
+    font-size: 16px;
+}
+#data-carousel div p
+{
+    font-size: 14px;
+}
+/*主页数据轮播结束*/
+
+
+header{
+    width: 100% ; 
+    height: 222px; 
+    text-align: center; 
+    padding: 38px 0; 
+    // background: url(../img/piyao2.jpg) no-repeat; 
+    // background-size: cover; 
+}
+
+.main-navigation{
+    background: #fff; 
+    border-top: 1px solid #ebebeb; 
+
+    border-bottom: 2px solid #e1e1e1;
+}
+
+.main-navigation li a{
+    text-align: center; 
+    width: 100%; 
+}
+
+.red{
+    color: red; 
+}

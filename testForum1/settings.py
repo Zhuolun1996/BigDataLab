@@ -40,9 +40,9 @@ DATABASES = {
     'default': {
         # Misago requires PostgreSQL to run
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'BDlab',
-        'USER': 'lab',
-        'PASSWORD': 'asdfgh11',
+        'NAME': 'test',
+        'USER': 'root',
+        'PASSWORD': 'reFugd?3e',
         'HOST': 'localhost',
         'PORT': 5432,
     },
@@ -98,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'cn-zh'
+LANGUAGE_CODE = 'en-us'
 
 #TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Shanghai'
@@ -139,6 +139,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'theme', 'static'),
     ('wordcloud',os.path.join(STATIC_ROOT, 'wordcloud')),
+    ('css',os.path.join(STATIC_ROOT, 'css')),
+    ('js',os.path.join(STATIC_ROOT, 'js')),
+    ('assert',os.path.join(STATIC_ROOT, 'assert')),
+    ('img',os.path.join(STATIC_ROOT, 'img')),
 ]
 
 
