@@ -11,7 +11,8 @@ class passage(models.Model):
     passageDate = models.DateField(auto_now=True)
     passageSource = models.CharField(max_length=20, choices=PASSAGE_SOURCE_CHOICES, null=False)
     passageLabel = models.CharField(max_length=20, choices=PASSAGE_LABEL_CHOICES, null=False)
-    passagePhone = models.CharField(max_length=20,blank=True)
+    passagePhone = models.CharField(max_length=20, blank=True)
+
     def __str__(self):
         return self.passageTitle
 
@@ -21,12 +22,10 @@ class passage(models.Model):
 
 class showingPassage(models.Model):
     passageTitle = models.CharField(max_length=100, primary_key=True)
-    passageBody = models.TextField(blank=True,default='无内容',null=True)
+    passageBody = models.TextField(blank=True, default='无内容', null=True)
 
     def __str__(self):
         return self.passageTitle
-
-
 
 
 class blogPassage(models.Model):
@@ -35,6 +34,7 @@ class blogPassage(models.Model):
     body = models.TextField(null=False)
     date = models.DateField(auto_now=True)
     label = models.CharField(max_length=20, choices=LABEL_CHOICES, null=False)
+    image = models.ImageField(upload_to='blogImages/', default='blogImages/no-img.jpeg')
 
     def __str__(self):
         return self.title

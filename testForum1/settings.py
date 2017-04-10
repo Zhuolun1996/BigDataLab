@@ -143,6 +143,7 @@ STATICFILES_DIRS = [
     ('js',os.path.join(STATIC_ROOT, 'js')),
     ('assert',os.path.join(STATIC_ROOT, 'assert')),
     ('img',os.path.join(STATIC_ROOT, 'img')),
+
 ]
 
 

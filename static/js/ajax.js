@@ -18,6 +18,7 @@ var allPages = {
             url: this.url, 
             success: function(data){
                 var pages = $.parseJSON(data.content); 
+                console.log("here"); 
                 console.log(pages); 
                 $.each(pages, function(){
                     _allPages.display(this); 
@@ -29,15 +30,15 @@ var allPages = {
     display: function(page){
         console.log(page);
         // fake-data
-        page.fields = {
-            author: "吴斐",
-            date: "2017-4-10", 
-            imgSrc: "http://image.golaravel.com/b/60/0540baaed781628b02aac992d1c8f.png",
-            body: "13324423424234"
-        }
+        // page.fields = {
+        //     author: "吴斐",
+        //     date: "2017-4-10", 
+        //     imgSrc: "http://image.golaravel.com/b/60/0540baaed781628b02aac992d1c8f.png",
+        //     body: "13324423424234"
+        // }
         // fake-data 
         // document.getElementById(this.container).innerHTML = "";  
-        this.loadPage(page); 
+        // this.loadPage(page); 
     }, 
 
     loadPage: function(page){    
