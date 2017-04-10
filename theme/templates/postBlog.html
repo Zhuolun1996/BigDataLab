@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="/postBlog/" method="post">
+<form action="/postBlog/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <label for="id_title">文章标题</label>
     <input id="id_title" maxlength="100" name="title" placeholder="文章题目" type="text" />
@@ -13,6 +13,8 @@
         <option value="health">健康养生</option>
         <option value="newTech">新科技</option>
     </select>
+    <label for="id_image">背景图片</label>
+    <input id="id_image" name="image" type="file" />
     <input type="submit"/>
 </form>
 {% endblock %}

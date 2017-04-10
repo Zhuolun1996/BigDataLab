@@ -139,6 +139,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'theme', 'static'),
     ('wordcloud',os.path.join(STATIC_ROOT, 'wordcloud')),
+    ('blogImages',os.path.join(MEDIA_ROOT,'blogImages')),
 ]
 
 

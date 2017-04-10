@@ -10,3 +10,4 @@ class blogPassageForm(forms.ModelForm):
     class Meta:
         model=blogPassage
         fields='__all__'
+

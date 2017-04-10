@@ -22,13 +22,14 @@ def indexPage(request):
 def postBlog(request):
     postResult = 'failed'
     if request.method == 'POST':
-        Passage = blogPassageForm(request.POST)
+        Passage = blogPassageForm(request.POST,request.FILES)
         if Passage.is_valid():
             _title = request.POST.get('title')
             _body = request.POST.get('body')
             _date = request.POST.get('date')
             _label = request.POST.get('label')
-            blogPassage.objects.create(title=_title, body=_body, date=_date, label=_label)
+            _image = request.FILES.get('image')
+            blogPassage.objects.create(title=_title, body=_body, date=_date, label=_label,image=_image)
             postResult = 'success'
             return render(request, 'postResult.html', {'postResult': postResult})
     return render(request, 'postResult.html', {'postResult': postResult})
@@ -65,11 +66,12 @@ def postPassage(request):
                 _passageDate = request.POST.get('passageDate')
                 _passageSource = request.POST.get('passageSource')
                 _passageLabel = request.POST.get('passageLabel')
+                _passagePhone = request.POST.get('passagePhone')
                 if _passageTitle == "":
                     _passageTitle = functions.getURLTitle(_passageLink)
                 passage.objects.create(passageLink=_passageLink, passageTitle=_passageTitle, passageBody=_passageBody,
                                        passageDate=_passageDate, passageSource=_passageSource,
-                                       passageLabel=_passageLabel)
+                                       passageLabel=_passageLabel,passagePhone=_passagePhone)
                 postResult = 'success'
             return render(request, 'postResult.html', {'postResult': postResult})
     else:
