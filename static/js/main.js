@@ -77,4 +77,10 @@ window.addEventListener("load", function(){
     }
     //调用
     CanvasParticle(config);
+}); 
+
+window.addEventListener("load", function(){
+    $(".bs-example-modal-lg .submit").click(function(e){
+        $(".bs-example-modal-lg").modal("hide"); 
+    })
 })

@@ -70,7 +70,8 @@ header{
     background: #fff; 
     border-top: 1px solid #ebebeb; 
 
-    border-bottom: 2px solid #e1e1e1;
+    border-bottom: 2px solid #e1e1e1; 
+    // margin-bottom: 35px; 
 }
 
 .main-navigation li a{
