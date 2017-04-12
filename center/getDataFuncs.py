@@ -53,7 +53,7 @@ def getBlogDetail(request, title):
         blog = blogPassage.objects.get(title=title)
     except blogPassage.DoesNotExist:
         raise Http404
-    data = serializers.serialize('json', blog)
+    data = serializers.serialize('json', [blog])
     return data
 
 
