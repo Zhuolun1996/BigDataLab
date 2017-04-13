@@ -1,8 +1,23 @@
 .modal-header .close{
-    margin-top: -15px; 
-    font-size: 28px; 
+    margin-top: 0px; 
+    margin-right: 20px; 
+    font-size: 28px;  
 }
-
+.modal-header .modal-close-btn{
+}
+.modal-header{
+    padding: 20px 0; 
+}
 .modal-header h4{
     padding-left: 18px; 
 }
+
+.modal-footer .bdc-btn-primary{
+    display: block; 
+    background: #38BA72; 
+    width: 300px; 
+    margin: 0 auto; 
+    color: white; 
+    margin-top: 20px; 
+}
+
