@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="static/assert/Font-Awesome-3.2.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/assert/bootstrap-3.3.7/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/bootstrapValidator.min.css">
+    <!-- editor.md 编辑器兼容bootstrap所必须的css文件，不然会有冲突 -->
+    <link rel="stylesheet" href="/static/assert/editor.md/tests/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/assert/editor.md/css/editormd.css" />
     <link rel="stylesheet" href="/static/css/post.css">
     <link rel="stylesheet" href="/static/css/btAttach.css">
-    <link rel="stylesheet" href="/static/css/bootstrapValidator.min.css">
+
     
 </head>
 <body>
@@ -44,7 +48,7 @@
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="##" class = "btn">首页</a></li>
                                 <li><a class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">举报</a></li>
-                                <li><a href="##" class = "btn">辟谣</a></li>
+                                <li><a href="##" class = "btn" data-toggle="modal" data-target="#write-modal">辟谣</a></li>
                                 <li><a href="##" class = "btn" id = "post-pages-btn">往期文章</a></li>
                                 <li><a href="##" class = "btn">论坛</a></li>
                             </ul>
@@ -86,7 +90,48 @@
     <!-- 主体部分结束 -->
     
 
+    <!-- 写作窗口模态窗开始 -->
+    <div class="modal fade " id="write-modal" tabindex = -1 role = "dialog" aria-labelledby="write-title">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "icon-remove"></span></button>
+                    <h4 class="modal-title" id="write-title">辟谣文章写作</h4>
+                </div>
 
+                <div class="modal-body">
+
+                    <form class="" role="form">
+                        <div class="form-group">
+                            <label for="write-post-tab" class="control-label">文章所属类别</label>
+                            <span class = "post-select-div">
+                                <select name="" id="write-post-tab" class = "form-control">
+                                    <option value="">食品安全</option>
+                                    <option value="">健康养生</option>
+                                    <option value="">新科技</option>
+                                </select>
+                            </span>
+                        </div> 
+
+                        <div class="form-group">
+                            <label for="write-post-title" class="label-control">文章标题</label>
+                            <input type="text" id = "文章标题" class="form-control" name = "title">
+                        </div>
+
+                        <div class = "form-group" id = "test-editormd">
+                            <textarea style="display:none;"></textarea>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class = "modal-footer">
+                    <button type = "button" class = "btn bdc-btn-primary" data-loading-text = "文章发表中">发表文章</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 写作窗口模态窗结束 -->
 
 
 
@@ -109,7 +154,7 @@
                 <div class="modal-header">
                     <div class = "row">
                         <div class = "col-md-offset-5">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "icon-remove"></span></button>
                             <h4 class="modal-title" id="gridSystemModalLabel">谣言举报</h4>
                         </div>
                     </div>
@@ -186,7 +231,7 @@
                 <div class="modal-header" id = "log-in-title">
                     <div class="row">
                         <div class="col-md-offset-5">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "icon-remove"></span></button>
                             <h4 class="modal-title">登录</h4>
                         </div>
                     </div>
@@ -228,7 +273,7 @@
                 <div class="modal-header" id = "register-title">
                     <div class="row">
                         <div class="col-md-offset-5">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "icon-remove"></span></button>
                             <h4 class="modal-title">用户注册</h4>
                         </div>
                     </div>
@@ -290,5 +335,7 @@
     <!-- <script src = "static/assert/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script> -->
     <!-- <script src = "static/assert/bootstrapvalidator/dist/js/language/zh_CN.js"></script> -->
     <script src = "static/js/formConfirm.js"></script>
+    <script src = "static/assert/editor.md/editormd.js"></script>
+    <script src = "static/js/editorSetting.js"></script>
 </body>
 </html>
