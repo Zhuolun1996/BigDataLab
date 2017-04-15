@@ -8,7 +8,7 @@ var dataCarousel = function(){
         {"title":'Title 5',"content":'Some attention grabbing details one more', "image": '/static/img/carousel5.png'}
     ];
 
-    carousel(wrap, data, 566, 208);
+    carousel(wrap, data, 400, 180);
 
     function carousel(wrap, data, width, height){
         var ul = document.createElement('ul');
@@ -78,10 +78,4 @@ window.addEventListener("load", function(){
     //调用
     CanvasParticle(config);
 }); 
-
-// window.addEventListener("load", function(){
-//     $(".bs-example-modal-lg .submit").click(function(e){
-//         $(".bs-example-modal-lg").modal("hide"); 
-//     })
-// }); 
 
