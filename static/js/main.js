@@ -8,7 +8,7 @@ var dataCarousel = function(){
         {"title":'Title 5',"content":'Some attention grabbing details one more', "image": '/static/img/carousel5.png'}
     ];
 
-    carousel(wrap, data, 566, 208);
+    carousel(wrap, data, 400, 180);
 
     function carousel(wrap, data, width, height){
         var ul = document.createElement('ul');

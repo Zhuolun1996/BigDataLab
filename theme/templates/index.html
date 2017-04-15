@@ -8,11 +8,12 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/css/bootstrapValidator.min.css">
-    <!-- editor.md 编辑器兼容bootstrap所必须的css文件，不然会有冲突 -->
-    <link rel="stylesheet" href="/static/assert/editor.md/tests/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/static/assert/editor.md/css/editormd.css" />
+    <!-- editor 编辑器兼容bootstrap所必须的css文件，不然会有冲突 -->
+    <link rel="stylesheet" href="/static/assert/editor/tests/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/assert/editor/css/editormd.css" />
     <link rel="stylesheet" href="/static/css/post.css">
     <link rel="stylesheet" href="/static/css/btAttach.css">
+    <script src = "https://cdn.bootcss.com/echarts/3.5.2/echarts.common.js"></script>
 
     
 </head>
@@ -68,11 +69,25 @@
     <!-- 数据展示区开始 -->
     <div class = "container" id = "data-show">
         <div class="row">
+<!--             <div class = "col-md-4 col-sm-12">
+                <form role="form">
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="">食品安全</option>
+                            <option>健康养生</option>
+                            <option>新科技</option>
+                        </select>
+            </div> -->
             <!-- 热门谣言轮播展示 -->
-            <div class = "col-md-4 col-sm-12">
+            <div class = "col-md-4 col-sm-12 carousel">
+                <h2>热门谣言</h2>
                 <div id = "data-carousel"></div>
             </div>
             <!-- 热门谣言轮播展示结束 -->
+            <div class = "col-md-4 col-sm-12 col-md-offset-2">
+                <h2>7天内的谣言变化情况</h2>
+                <div id = "main" style="width: 500px;height:300px;"></div>
+            </div>
         </div>
     </div>
     <!-- 数据展示区结束 -->
@@ -335,8 +350,9 @@
     <!-- <script src = "static/assert/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script> -->
     <!-- <script src = "static/assert/bootstrapvalidator/dist/js/language/zh_CN.js"></script> -->
     <script src = "/static/js/formConfirm.js"></script>
-    <script src = "/static/assert/editor.md/editormd.js"></script>
+    <script src = "/static/assert/editor/editormd.js"></script>
     <script src = "/static/js/editorSetting.js"></script>
     <script src = "/static/js/formConfirm.js"></script>
+    <script src = "/static/js/charts.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@ p
     overflow: hidden;
     zoom: 1;
 
-    margin: 100px auto;
+    margin: 25px auto;
 
     data-carousel-shadow: 0 0 25px rgba(0,0,0,.7);
 }
@@ -81,5 +81,9 @@ header{
 
 #test-editormd{
     margin-top: 20px; 
+}
+
+#data-show{
+    margin-top: 25px; 
 }
 
