@@ -78,4 +78,10 @@ window.addEventListener("load", function(){
     //调用
     CanvasParticle(config);
 }); 
-
+window.addEventListener("load", function(){
+    $(".home").click(function(){
+        console.log("xxxxxx");
+        $("#post-pages").fadeOut();
+        $("#data-show").fadeIn(); 
+    })
+})

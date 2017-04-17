@@ -3,15 +3,13 @@ data.field = {
             author: "吴斐",
             title: "this is a title",
             date: "2017-4-10", 
-            imgSrc: "../img/logo.png",
+            imgSrc: "http://image.golaravel.com/b/60/0540baaed781628b02aac992d1c8f.png",
             body: "返回值一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（不包括 end）为止的所有字符。说明\
                    String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。\
                    还要注意的是，String.slice() 与 Array.slice() 相似。xxxxxxxxxxasdkdlasdkjasddddddddjsalsdddddddddddddddddddddddabcsbbbbbasdjjad\
                    11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
 }
-
-window.onload = function(){
-    var postBlog = Vue.extend({
+ var postBlog = Vue.extend({
         template: 
                 '<div class = "post">\
                     <post-head :title="field.title" :author="field.author" :date="field.date"></post-head>\
@@ -92,10 +90,22 @@ window.onload = function(){
             }
         }
     }); 
-    var bus = new Vue(); 
-    Vue.component('post', postBlog); 
-    var vm = new Vue({
-        el: '#app', 
-        data: data
+var bus = new Vue(); 
+Vue.component('post', postBlog); 
+
+$("#post-pages-btn").on("click",  function(){
+    
+    $.ajax({
+        type: "get", 
+        url: "/ajax_getAllBlogs",
+        success: function(response){
+            var pages = $.parseJSON(response.content);
+            var data = pages[0]; 
+            console.log(data); 
+            var vm = new Vue({
+                el: '#post-pages', 
+                data: data
+            });
+        }
     })
-}
+}); 

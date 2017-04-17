@@ -1,8 +1,93 @@
+var postBlog = Vue.extend({
+        template: 
+                '<div class = "post">\
+                    <post-head :title="field.title" :author="field.author" :date="field.date"></post-head>\
+                    <post-media :imgSrc="field.image"></post-media>\
+                    <post-body :body="field.body" :index="field.index"></post-body>\
+                    <post-premalink :index="field.index"></post-premalink>\
+                </div>',
+        props: ['field'], 
+
+        components:{
+            'post-head': {
+                template: 
+                        '<div class = "post-head">\
+                            <post-title :title="title"></post-title>\
+                            <post-meta :date="date" :author="author"></post-meta>\
+                         </div>', 
+                props: ["author", "title", "date"], 
+
+                components: {
+                    'post-title': {
+                        props: ["title"],
+                        template: '<h1 class = "post-title"> {{ title }}</h1>'
+                    }, 
+                    'post-meta': {
+                        template: 
+                            '<div class = "post-meta">\
+                                <span>作者: <a>{{author}}</a></span>\
+                                <span>日期: {{date}}</span>\
+                             </div>',
+                        props:["date", "author"]
+                    }
+                }
+            }, 
+
+            'post-media': {
+                template: '<div class = "feature-media"><img v-bind:src="imgSrc"></img></div>', 
+                props: ["imgSrc"]
+            }, 
+
+            'post-body': {
+                template: '<div class = "post-content"><p>{{bodyContent}}</p></div>', 
+                props: ["body", "index"], 
+                data: function(){
+                    return {
+                        counter: 0
+                    }
+                }, 
+                computed: {
+                    bodyContent: function(){
+                        return this.counter % 2 ? this.body : this.body.slice(0, 100); 
+                    }
+                },
+                mounted: function(){
+                    var _this = this; 
+                    bus.$on("postToggle", function(index){
+                        if(_this.index == index)
+                            _this.counter++;
+                        // console.log(_this.counter); 
+                    })
+                }
+            }, 
+
+            'post-premalink': {
+                template: '<button class = "btn btn-default btn-default" @click = "readAll" v-text = "buttonText"></button>', 
+                data: function(){
+                    return {counter: 0}; 
+                }, 
+                props:["index"],
+                computed: {
+                    buttonText: function(){
+                        return this.counter % 2 ? "收起" : "阅读全文"; 
+                    }
+                },
+                methods: {
+                    readAll: function(e){
+                        var that = this; 
+                        bus.$emit("postToggle", that.index); 
+                        this.counter++; 
+                        // console.log(this.counter);   
+                    }
+                }
+            }
+        }
+}); 
+
+var bus = new Vue(); 
+Vue.component('post', postBlog); 
+
 $("#post-pages-btn").click(function(e){
-    // $.get("/ajax_getAllBlogs/")
-    //     .done(function(data, status, xhr){
-    //         console.log(data); 
-    //     })
     allPages.load(); 
 }); 
 
@@ -15,81 +100,32 @@ var allPages = {
         $.ajax({
             type: "get", 
             url: this.url, 
-            success: function(data){
+            success: function(data){ 
                 var pages = $.parseJSON(data.content); 
-                $("#data-show").fadeOut(); 
-                $.each(pages, function(){
-                    _allPages.display(this); 
-                }); 
+                console.log(pages); 
+                $("#data-show").fadeOut();           //隐藏首页的数据可视区域
+                $(_allPages.container).fadeIn();
+                var data = {}; 
+                                                     //得到的json数据修饰
+                pages.forEach(function(item, index){
+                    item.fields.title = item.pk;
+                    item.fields.image = "http://placehold.it/700x300";
+                    item.fields.index = index;
+                }) 
+                data.pages = pages;   
+                var vm = new Vue({                   //渲染post区域
+                    el: "#post-pages", 
+                    data: data
+                });
             }
         })
-    }, 
-
-    display: function(page){
-        page.fields = {
-            author: "吴斐",
-            date: "2017-4-10", 
-            imgSrc: "http://image.golaravel.com/b/60/0540baaed781628b02aac992d1c8f.png",
-            body: "返回值一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（不包括 end）为止的所有字符。说明\
-String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。\
-还要注意的是，String.slice() 与 Array.slice() 相似。xxxxxxxxxxasdkdlasdkjasddddddddjsalsdddddddddddddddddddddddabcsbbbbbasdjjad\
-11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
-        }
-        // fake-data
-        // console.log(document.getElementById(this.container)); 
-        document.getElementById(this.container.slice(1)).innerHTML = "";  
-        this.loadPage(page); 
-
-    }, 
-
-    loadPage: function(page){    
-        console.log("shad"); 
-        var article = $("<article></article>").addClass("post"),
-            head = $("<div></div>").addClass("post-head"),
-            media = $("<div></div>").addClass("feature-media"), 
-            content = $("<div></div>").addClass("post-content"), 
-            premalink = $("<div></div>").addClass("post-premalink"); 
-
-        head.html('<h1 class="post-title">' + page.pk + '</h1>'
-                + '<div class = "post-meta"> <span class = "author">作者：<a href = "">' + page.fields.author
-                +  '</a></span>' + '<span class = "post-date" title = ' + page.fields.date + '>' + page.fields.date
-                + '</span></div>'); 
-
-        media.html('<img src = ' + page.fields.imgSrc + "></img>"); 
-        console.log(page.fields.body); 
-        console.log(page.fields.body.slice(0, 100)); 
-        var mainIdea = page.fields.body.slice(0, 100); 
-        $("<p class = 'mainidea'></p>").html(mainIdea).appendTo(content); 
-        $("<p class = 'mainbody'></p>").html(page.fields.body).appendTo(content).fadeOut();
-        $("<a>阅读全文</a>")
-            .addClass("btn btn-default read-all")
-            .on("click", function(e){
-                content.find("p").toggle(); 
-            })
-            .appendTo(premalink); 
-
-        head.appendTo(article); 
-        media.appendTo(article); 
-        content.appendTo(article); 
-        premalink.appendTo(article); 
-        article.hide().fadeIn().appendTo(this.container); 
-        
     }
 }
 
-// 点击阅读全文后的ajax数据
-// var argu = " + "123" +  ">\S+)"; 
-$.get("/ajax_getBlogDetail/123")
-        .done(function(data, status, xhr){
-            console.log("asdks");
-            console.log(data); 
-        })
-
-
-// $(".post .post-premalink .read-all").click(function(e){
-//     var title = $.parents(".post").find(".post-head .post-title").text();   //获取按钮的祖先元素中的title属性
-//     var argu = "(?P<" + title +  ">\S+)"; 
-
-
-// })
+// 点击阅读全文后的ajax数据 
+// $.get("/ajax_getBlogDetail/123")
+//         .done(function(data, status, xhr){
+//             console.log("asdks");
+//             console.log(data); 
+//         })
 

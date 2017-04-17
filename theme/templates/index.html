@@ -43,11 +43,11 @@
                                 <span class="icon-bar"></span> -->
                             </button>
                             <!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
-                            <a href="##" class="navbar-brand">BDC辟谣网</a>
+                            <a href="##" class="navbar-brand home">BDC辟谣网</a>
                         </div>
                         <div class="collapse navbar-collapse navbar-responsive-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="##" class = "btn">首页</a></li>
+                                <li class="active"><a href="##" class = "btn home" id = "home">首页</a></li>
                                 <li><a class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">举报</a></li>
                                 <li><a href="##" class = "btn" data-toggle="modal" data-target="#write-modal">辟谣</a></li>
                                 <li><a href="##" class = "btn" id = "post-pages-btn">往期文章</a></li>
@@ -97,7 +97,8 @@
         <div class = "container">
             <div class="row">
                 <div class="article-content col-md-10 col-md-offset-1" id = "post-pages">
-                    
+                    {{pk}}
+                    <post v-for="page in pages" :field="page.fields"></post>
                 </div>
             </div>
         </div>
