@@ -6,7 +6,6 @@ $("#post-pages-btn").click(function(e){
     allPages.load(); 
 }); 
 
-
 var allPages = {
     container: "#post-pages", 
     url: "/ajax_getAllBlogs", 
@@ -17,11 +16,7 @@ var allPages = {
             type: "get", 
             url: this.url, 
             success: function(data){
-                console.log(data); 
                 var pages = $.parseJSON(data.content); 
-                console.log("here"); 
-                console.log(pages); 
-                console.log($("#data-show")); 
                 $("#data-show").fadeOut(); 
                 $.each(pages, function(){
                     _allPages.display(this); 
@@ -31,8 +26,6 @@ var allPages = {
     }, 
 
     display: function(page){
-        console.log(page);
-        // fake-data
         page.fields = {
             author: "吴斐",
             date: "2017-4-10", 
@@ -66,18 +59,12 @@ String 对象的方法 slice()、substring() 和 substr() （不建议使用）�
         console.log(page.fields.body); 
         console.log(page.fields.body.slice(0, 100)); 
         var mainIdea = page.fields.body.slice(0, 100); 
-        $("<p></p>").html(mainIdea).appendTo(content); 
-
+        $("<p class = 'mainidea'></p>").html(mainIdea).appendTo(content); 
+        $("<p class = 'mainbody'></p>").html(page.fields.body).appendTo(content).fadeOut();
         $("<a>阅读全文</a>")
             .addClass("btn btn-default read-all")
             .on("click", function(e){
-                // content.remove(); 
-                console.log("jjj"); 
-                console.log(page); 
-                // $("<p></p>").html(page.fields.body).appendTo(content); 
-                content.find("p").html(page.fields.body); 
-                console.log(content); 
-                console.log(content.find("p").text()); 
+                content.find("p").toggle(); 
             })
             .appendTo(premalink); 
 

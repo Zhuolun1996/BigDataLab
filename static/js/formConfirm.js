@@ -78,6 +78,34 @@
                             // message: '电话号码格式不对'
                         }
                     }
+                }, 
+
+                passageLink: {
+                    validators: {
+                        notEmpty: {
+                            message: '谣言链接不能为空'
+                        }
+                    }
+                },
+
+                passageTitle: {
+                    validators: {
+                        notEmpty: {
+                            message: '标题不能为空'
+                        }
+                    }
+                },
+
+                passagePhone: {
+                    validators: {
+                        notEmpty: {
+                            message: '电话号码不能为空'
+                        }, 
+                        regexp: {
+                            regexp: /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
+                            message: '电话号码格式不对'
+                        }
+                    }
                 }
             }
         });

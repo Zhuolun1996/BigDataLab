@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/static/css/post.css">
     <link rel="stylesheet" href="/static/css/btAttach.css">
     <script src = "https://cdn.bootcss.com/echarts/3.5.2/echarts.common.js"></script>
-
+    <script src = "/static/js/vue.js"></script>
     
 </head>
 <body>
@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <a href=""><img src="/static/img/logo1.png" alt=""></a>
+                    <a href=""><img src="data:image/png;base64,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" alt=""></a>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                                 <li><a class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">举报</a></li>
                                 <li><a href="##" class = "btn" data-toggle="modal" data-target="#write-modal">辟谣</a></li>
                                 <li><a href="##" class = "btn" id = "post-pages-btn">往期文章</a></li>
-                                <li><a href="##" class = "btn">论坛</a></li>
+                                <li><a href="/postPassage/" class = "btn">论坛</a></li>
                             </ul>
 
                             <ul class="nav navbar-nav navbar-right">
@@ -97,7 +97,7 @@
         <div class = "container">
             <div class="row">
                 <div class="article-content col-md-10 col-md-offset-1" id = "post-pages">
-
+                    
                 </div>
             </div>
         </div>
@@ -176,65 +176,137 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form">
-                        
+
+                    <!-- <form class="form-horizontal" role="form" action="/postPassage/" method = "post">
+                        {% csrf_token %}
                         <div class="form-group">
-                            <label for="rumor-title" class="col-md-2 control-label">标题</label>
+                            <label for="id_passageTitle" class="col-md-2 control-label">标题</label>
                             <div class = "col-md-8">
-                                <input type="text" class="form-control" id="rumor-title" name="title" placeholder="谣言标题">
+                                <input type="text" class="form-control" id="id_passageTitle" name="passageTitle" placeholder="谣言标题">
                             </div>
                         </div>    
-
+                        
                         <div class="form-group">
-                            <label for="rumor-link" class="col-md-2 control-label">链接</label>
+                            <label for="id_passageLink" class="col-md-2 control-label">链接</label>
                             <div class = "col-md-8">
-                                <input type="text" class="form-control" id="rumor-link" name = "link" placeholder="https://">
+                                <input type="text" class="form-control" id="id_passageLink" name = "passageLink" placeholder="https://">
                             </div>
                         </div>    
                 
                         <div class="form-group">
-                            <div for="rumor-source" class="col-md-2 control-label"><strong>来源</strong></div>
+                            <div for="id_passageSource" class="col-md-2 control-label"><strong>来源</strong></div>
                             <div class = "col-md-8">
-                                <label class = "radio-inline" for="frineds-cycle"><input type="radio" name="rumor-source" value="friends-cycle" id = "friends-cycle">朋友圈</label>
-                                <label class = "radio-inline" for="message"><input type="radio" name="rumor-source" value="message" id = "message">短信</label>
-                                <label class = "radio-inline" for="email"><input type="radio" name="rumor-source" value="email" id = "email">邮件</label>
+                                <select name="" id="id_passageSource" name="passageSource" class = "form-control">
+                                    <option value="friendCicle">朋友圈</option>
+                                    <option value="message">短信</option>
+                                    <option value="email">邮件</option>
+                                </select>
                             </div>
                         </div>  
                         
                         <div class="form-group">
-                            <div for="rumor-label" class="col-md-2 control-label"><strong>标签</strong></div>
+                            <div for="id_passageLabel" class="col-md-2 control-label"><strong>标签</strong></div>
                             <div class = "col-md-8">
-                                <label class = "radio-inline" for="food-safety"><input type="radio" name="rumor-label" value="food-safety">食品安全</label>
-                                <label class = "radio-inline" for="health"><input type="radio" name="rumor-label" value="health" id = "health">健康养生</label>
-                                <label class = "radio-inline" for="technology"><input type="radio" name="rumor-label" value="technology" id = "technology">新科技</label>
+                                <select name="passageLabel" id="id_passageLabel" class = "form-control">
+                                    <option value="Food">食品安全</option>
+                                    <option value="health">健康养生</option>
+                                    <option value="newTech">新科技</option>
+                                </select>
                             </div>
                         </div>  
                         
-                        <div class="form-group">
-                            <label for="contact" class="col-md-2 control-label">联系方式</label>
+                        <div class = "form-group">
+                            <label for = "id_passageDate" class = "col-md-2 control-label">谣言日期</label>
                             <div class = "col-md-8">
-                                <input type="text" class="form-control" id="contact" name = "contact" placeholder="联系方式">
+                                <input type="date" id = "id_passageDate" class = "passageDate">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="rumor-text" class="col-md-2 control-label">正文</label>
+                            <label for="id_passagePhone" class="col-md-2 control-label">联系方式</label>
                             <div class = "col-md-8">
-                                 <textarea class="form-control" rows="3" id = "text" placeholder="谣言正文"></textarea>
+                                <input type="text" class="form-control" id="id_passagePhone" name = "passagePhone" placeholder="联系方式">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class = "col-md-8 col-md-offset-2 btn btn-info submit" data-dismiss="modal" aria-label="Close">   
-                                提交
-                                <!-- <button class = "btn btn-info" type = "submit">提交</button> -->
+                            <label for="id_PassageBody" class="col-md-2 control-label">正文</label>
+                            <div class = "col-md-8">
+                                 <textarea class="form-control" rows="3" id = "text" placeholder="谣言正文" id = "id_passageBody" name="passageBody"></textarea>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                                <input type="submit"/>
+                        </div>
+                    </form> -->
+                    <form action="/postPassage/" method="post" class="form-horizontal" role="form">
+                        {% csrf_token %}
+                        <div class = "form-group">
+                            <div class = "col-md-2 control-label"><label for="id_passageLink">谣言链接</label></div>
+                            <div class = "col-md-8">
+                                <input class = "form-control" id="id_passageLink" maxlength="1000" name="passageLink" placeHolder="谣言链接" type="text" required/>
+                            </div>
+                        </div>
+
+                        <div class = "form-group">
+                            <div class = "col-md-2 control-label"><label for="id_passageTitle">谣言标题</label></div>
+                            <div class = "col-md-8">
+                                <input class = "form-control" id="id_passageTitle" maxlength="100" name="passageTitle" placeholder="谣言题目" type="text" />
+                            </div>
+                        </div>
+
+                        <div class = "form-group">
+                            <div class = "col-md-2 control-label"><label for="id_passageBody">谣言内容</label></div>
+                            <div class = "col-md-8">
+                                <textarea class = "form-control" id="id_passageBody" name="passageBody" placeholder="谣言内容" cols="10" rows="10"></textarea>
+                            </div>
+                        </div>
+
+                        <div class = "form-group">
+                            <div class = "col-md-2 control-label"><label for="id_passageDate">谣言日期</label></div>
+                            <div class = "col-md-8">
+                                <input class = "form-control" id="id_passageDate" name="passageDate" type="date"/>
+                            </div>
+                        </div>
+
+                        <div class = "form-group">
+                            <div class = "col-md-2 control-label"><label for="id_passageSource">谣言来源</label></div>
+                            <div class = "col-md-8">
+                                <select id="id_passageSource" name="passageSource" class = "form-control">
+                                    <option value="friendCicle">朋友圈</option>
+                                    <option value="message">短信</option>
+                                    <option value="email">邮件</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class = "form-group">
+                            <div class = "col-md-2 control-label"><label for="id_passageLabel">谣言标签</label></div>
+                            <div class = "col-md-8">
+                                <select id="id_passageLabel" name="passageLabel" class = "form-control">
+                                    <option value="Food">食品安全</option>
+                                    <option value="health">健康养生</option>
+                                    <option value="newTech">新科技</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class = "form-group">
+                            <div class = "col-md-2 control-label"><label for="id_passagePhone">联系方式</label></div>
+                            <div class = "col-md-8">
+                                <input class = "form-control" id="id_passagePhone" name="passagePhone" type="text" placeholder="联系方式"/>
+                            </div>
+                        </div>
+                        <div class = "form-group">
+                            <button type = "submit" class = "btn bdc-btn-primary">提交</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
     <!-- 谣言举报模态窗结束 -->
     
     <!-- 注册登录页模态窗口开始 -->
@@ -337,8 +409,17 @@
     </div>
     <!-- 注册页结束 -->
     <!-- 注册登录页模态窗口结束 -->
-
-    <div id = "test"></div>
+   <!--  <a href="/postPassage/">表单页</a>
+    <div id = "test">
+        <form action="" method="post">
+            <div class = "form-group">
+                <input type="text">
+            </div>
+            <div class = "form-group">
+                <input type="submit">
+            </div>
+        </form>
+    </div> -->
     <script src="/static/js/jquery-3.2.0.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src = "/static/js/particle.js"></script>
@@ -348,8 +429,7 @@
     <script src = "/static/js/bootstrapValidator.js"></script>
     <script src = "/static/js/zh_CN.js"></script>
     <!-- <script src = "static/assert/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script> -->
-    <!-- <script src = "static/assert/bootstrapvalidator/dist/js/language/zh_CN.js"></script> -->
-    <script src = "/static/js/formConfirm.js"></script>
+    <!-- <script src = "/static/js/formConfirm.js"></script> -->
     <script src = "/static/assert/editor/editormd.js"></script>
     <script src = "/static/js/editorSetting.js"></script>
     <script src = "/static/js/formConfirm.js"></script>
