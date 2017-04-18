@@ -29,7 +29,9 @@ def postBlog(request):
             _date = request.POST.get('date')
             _label = request.POST.get('label')
             _image = request.FILES.get('image')
-            blogPassage.objects.create(title=_title, body=_body, date=_date, label=_label,image=_image)
+            _author = request.user.username
+            print(_author)
+            blogPassage.objects.create(title=_title, body=_body, date=_date, label=_label,image=_image, author=_author)
             postResult = 'success'
             return render(request, 'postResult.html', {'postResult': postResult})
     return render(request, 'postResult.html', {'postResult': postResult})

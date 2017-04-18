@@ -39,7 +39,7 @@ var postBlog = Vue.extend({
             }, 
 
             'post-body': {
-                template: '<div class = "post-content"><p>{{bodyContent}}</p></div>', 
+                template: '<div class = "post-content">{{bodyContent}}</div>', 
                 props: ["body", "index"], 
                 data: function(){
                     return {
@@ -111,7 +111,8 @@ var allPages = {
                     item.fields.title = item.pk;
                     item.fields.image = "http://placehold.it/700x300";
                     item.fields.index = index;
-                }) 
+                }); 
+                pages[0].fields.body = '<h1>nihaoam </h1>'
                 data.pages = pages;   
                 var vm = new Vue({                   //渲染post区域
                     el: "#post-pages", 
