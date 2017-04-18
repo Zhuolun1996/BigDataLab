@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="/static/css/btAttach.css">
     <script src = "https://cdn.bootcss.com/echarts/3.5.2/echarts.common.js"></script>
     <script src = "/static/js/vue.js"></script>
-    
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
 </head>
 <body>
     <header>
@@ -97,8 +99,8 @@
         <div class = "container">
             <div class="row">
                 <div class="article-content col-md-10 col-md-offset-1" id = "post-pages">
-                    <!-- {{pk}} -->
                     <post v-for="page in pages" :field="page.fields"></post>
+                    <router-view></router-view>
                 </div>
             </div>
         </div>

@@ -60,7 +60,12 @@ body{
     line-height: 1.5em; 
     margin-bottom: 1.5em;   
 }
-
+.post a, 
+.post a:active, 
+.post a:hover{
+    color: white; 
+    text-decoration: none; 
+}
 .btn-default{
     border: 1px solid #f4645f; 
     background: #f4645f; 
