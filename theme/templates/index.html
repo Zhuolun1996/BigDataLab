@@ -16,7 +16,8 @@
     <script src = "https://cdn.bootcss.com/echarts/3.5.2/echarts.common.js"></script>
     <script src = "/static/js/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-    <script src = "static/js/component.js"></script>
+    <script src = "/static/js/component.js"></script>
+
 </head>
 <body>
 
@@ -66,6 +67,7 @@
     <!-- 导航条结束 -->
     <!-- <show-data></show-data> -->
     <router-view></router-view>
+
     <!-- 数据展示区开始 -->
     <!-- <div class = "container" id = "data-show">
         <div class="row"> -->
@@ -82,11 +84,12 @@
         </div>
     </div> -->
     <!-- 数据展示区结束 -->
-    
+
     <!-- 主体部分开始 -->
     <!-- <post-list :pages="pages"></post-list> -->
     <!-- 主体部分结束 -->
     <!-- <router-view></router-view> -->
+
 
     <!-- 写作窗口模态窗开始 -->
     <div class="modal fade " id="write-modal" tabindex = -1 role = "dialog" aria-labelledby="write-title">
@@ -109,7 +112,7 @@
                                     <option value="">新科技</option>
                                 </select>
                             </span>
-                        </div> 
+                        </div>
 
                         <div class="form-group">
                             <label for="write-post-title" class="label-control">文章标题</label>
@@ -163,6 +166,7 @@
                         {% csrf_token %}
                         <div class = "form-group">
                             <div class = "col-md-2 control-label"><label for="id_passageLink">谣言链接</label></div>
+
                             <div class = "col-md-8">
                                 <input class = "form-control" id="id_passageLink" maxlength="1000" name="passageLink" placeHolder="谣言链接" type="text" required/>
                             </div>
@@ -177,6 +181,7 @@
 
                         <div class = "form-group">
                             <div class = "col-md-2 control-label"><label for="id_passageBody">谣言内容</label></div>
+
                             <div class = "col-md-8">
                                 <textarea class = "form-control" id="id_passageBody" name="passageBody" placeholder="谣言内容" cols="10" rows="10"></textarea>
                             </div>
@@ -184,6 +189,7 @@
 
                         <div class = "form-group">
                             <div class = "col-md-2 control-label"><label for="id_passageDate">谣言日期</label></div>
+
                             <div class = "col-md-8">
                                 <input class = "form-control" id="id_passageDate" name="passageDate" type="date"/>
                             </div>
@@ -227,7 +233,7 @@
     </div>
     
     <!-- 谣言举报模态窗结束 -->
-    
+
     <!-- 注册登录页模态窗口开始 -->
 
     <!-- 登录页部分开始 -->
@@ -260,7 +266,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class = "col-md-8 col-md-offset-2 btn btn-info submit" data-dismiss="modal" aria-label="Close">   
+                            <div class = "col-md-8 col-md-offset-2 btn btn-info submit" data-dismiss="modal" aria-label="Close">
                                 提交
                                 <!-- <button class = "btn btn-info" type = "submit">提交</button> -->
                             </div>
@@ -271,7 +277,7 @@
         </div>
     </div>
     <!-- 登录页结束 -->
-    
+
     <!-- 注册页开始 -->
     <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby = "register-title">
         <div class="modal-dialog" role="document">
@@ -293,14 +299,14 @@
                                 <input type="text" id="register-name" name = "userName" class = "form-control" placeholder = "用户名">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="control-label col-md-2" for="register-email">邮箱地址</label>
                             <div class="col-md-8">
                                 <input type="text" id="register-email" name = "email" class = "form-control" placeholder = "邮箱地址">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="control-label col-md-2" for="register-contact">手机号码</label>
                             <div class="col-md-8">
@@ -316,7 +322,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class = "col-md-8 col-md-offset-2 btn btn-info submit " data-dismiss="modal" aria-label="Close">   
+                            <div class = "col-md-8 col-md-offset-2 btn btn-info submit " data-dismiss="modal" aria-label="Close">
                                 提交
                             </div>
                         </div>

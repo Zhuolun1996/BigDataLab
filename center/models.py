@@ -35,7 +35,7 @@ class blogPassage(models.Model):
     date = models.DateField(auto_now=True)
     label = models.CharField(max_length=20, choices=LABEL_CHOICES, null=False)
     image = models.ImageField(upload_to='blogImages/', default='blogImages/no-img.jpeg')
-    author = models.CharField(max_length=20,null=False,default='匿名用户')
+    author = models.CharField(max_length=20,blank=True,default='匿名用户')
     def __str__(self):
         return self.title
 
