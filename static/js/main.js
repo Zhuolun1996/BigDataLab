@@ -93,7 +93,8 @@ window.addEventListener("load", function(){
     var routes = [
         {path: "/postlist", component: postList},
         {path: "/postlist:id", component: postBlog},
-        {path: "/dataview", component: showData}
+        {path: "/dataview", component: showData}, 
+        {path: '/*', redirect: '/dataview'}
     ]
     const router = new VueRouter({
         routes // （缩写）相当于 routes: routes
