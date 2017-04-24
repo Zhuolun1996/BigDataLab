@@ -51,7 +51,10 @@ urlpatterns = [
     url(r'^ajax_getPassageCounts/$', centerData.getPassageCounts, name='ajax_getpassagecounts'),
     url(r'^ajax_getBlogDetail/(?P<title>\S+)$', centerData.getBlogDetail, name='ajax_getblogdetail'),
     url(r'^ajax_getSearchingTag/(?P<tag>\S+)$', centerData.getSearchingTag, name='ajax_getsearchingtag'),
-    url(r'^ajax_getSearchingBlog/(?P<name>\S+)$', centerData.getSearchingBlog, name='ajax_getsearchingblog'),
+    url(r'^ajax_getSearchingBlogByTitle/(?P<name>\S+)$', centerData.getSearchingBlogByTitle, name='ajax_getsearchingblogbytitle'),
+    url(r'^ajax_getSearchingBlogByBody/(?P<name>\S+)$', centerData.getSearchingBlogByBody, name='ajax_getsearchingblogbybody'),
+    url(r'^ajax_getAllCategories/$',centerData.getAllCategories,name='ajax_getallcategories'),
+    url(r'^ajax_getLatestThreads/$',centerData.getLatestThreads,name='ajax_getlatestthreads')
 
 ]
 

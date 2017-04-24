@@ -2,8 +2,10 @@ from center.models import blogPassage, showingPassage, passage
 from django.core import serializers
 from django_ajax.decorators import ajax
 from django.http import JsonResponse, Http404
+from misago.categories.models import CategoryManager
 import datetime
-
+from misago.categories.models import Category
+from misago.threads.models.thread import Thread
 
 @ajax
 def getAllBlogPassages(request):
@@ -68,10 +70,46 @@ def getSearchingTag(request, tag):
 
 
 @ajax
-def getSearchingBlog(request, name):
+def getSearchingBlogByTitle(request, name):
     try:
         passages = blogPassage.objects.filter(title__icontains=name)
     except blogPassage.DoesNotExist:
+        return JsonResponse({'status': 404})
+    data = serializers.serialize('json', passages)
+    return data
+
+@ajax
+def getSearchingBlogByBody(request, name):
+    try:
+        passages = blogPassage.objects.filter(body__icontains=name)
+    except blogPassage.DoesNotExist:
+        return JsonResponse({'status': 404})
+    data = serializers.serialize('json', passages)
+    return data
+
+@ajax
+def getAllCategories(request):
+    try:
+        categories=Category.objects.all_categories()
+    except Category.DoesNotExist:
+        return JsonResponse({'status':404})
+    data = serializers.serialize('json',categories)
+    return data
+
+@ajax
+def getLatestThreads(request,length=5):
+    try:
+        Threads=Thread.objects.all().order_by('last_post_on')[:length]
+    except Thread.DoesNotExist:
+        return JsonResponse({'status':404})
+    data = serializers.serialize('json',Threads)
+    return data
+
+@ajax
+def getAllPassages(request):
+    try:
+        passages = passage.objects.all()
+    except:
         return JsonResponse({'status': 404})
     data = serializers.serialize('json', passages)
     return data

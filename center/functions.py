@@ -8,10 +8,19 @@ import datetime
 
 
 def getURLTitle(url):
-    htmlText = requests.get(url).text
+    headers = {"Accept": "text/html,application/xhtml+xml,application/xml;",
+               "Accept-Encoding": "gzip",
+               "Accept-Language": "zh-CN,zh;q=0.8",
+               "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
+               }
+    htmlText = requests.get(url,headers=headers).text
+    print(htmlText)
     soup = BeautifulSoup(htmlText,"html5lib")
     title=soup.title.string
-    return title
+    images=soup.find_all("img")
+    postUser=soup.find(id="post-user").string
+    postDate=soup.find(id="post-date").string
+    return title,len(images),postUser,postDate
 
 
 def createWordCloud():

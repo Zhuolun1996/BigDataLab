@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import misago.users.views.auth
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 from misago.acl import get_user_acl
 from center.forms import passageForm, blogPassageForm
 from center.models import passage, blogPassage, showingPassage
@@ -10,6 +10,8 @@ from django.utils import timezone
 from misago.core.decorators import require_POST
 from django.http import Http404
 import datetime
+from misago.threads.models.thread import Thread
+
 
 
 # Create your views here.
@@ -18,6 +20,7 @@ def indexPage(request):
 
 
 @login_required
+@permission_required('passage.can_add_passage',raise_exception='permission_denied')
 @require_POST
 def postBlog(request):
     postResult = 'failed'
@@ -69,11 +72,13 @@ def postPassage(request):
                 _passageSource = request.POST.get('passageSource')
                 _passageLabel = request.POST.get('passageLabel')
                 _passagePhone = request.POST.get('passagePhone')
+                _passageAppendix = ""
                 if _passageTitle == "":
-                    _passageTitle = functions.getURLTitle(_passageLink)
+                    _passageTitle = functions.getURLTitle(_passageLink)[0]
+                    _passageAppendix = str(functions.getURLTitle(_passageLink)[1:])
                 passage.objects.create(passageLink=_passageLink, passageTitle=_passageTitle, passageBody=_passageBody,
                                        passageDate=_passageDate, passageSource=_passageSource,
-                                       passageLabel=_passageLabel,passagePhone=_passagePhone)
+                                       passageLabel=_passageLabel,passagePhone=_passagePhone,passageAppendix=_passageAppendix)
                 postResult = 'success'
             return render(request, 'postResult.html', {'postResult': postResult})
     else:
@@ -86,3 +91,7 @@ def searchTag(request, tag):
 
 def searchBlog(request, name):
     return render(request, 'archives.html')
+
+
+
+
