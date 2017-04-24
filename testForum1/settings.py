@@ -40,7 +40,7 @@ DATABASES = {
     'default': {
         # Misago requires PostgreSQL to run
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'BDlab',
+        'NAME': 'bdlab',
         'USER': 'lab',
         'PASSWORD': 'asdfgh',
         'HOST': 'localhost',
